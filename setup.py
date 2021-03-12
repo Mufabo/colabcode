@@ -24,6 +24,7 @@ if __name__ == "__main__":
             "nest_asyncio==1.4.3",
             "uvicorn==0.13.1",
             "jupyterlab==3.0.7",
+            "tornado==5.1.0",
         ],
         platforms=["linux", "unix"],
         python_requires=">3.5.2",
