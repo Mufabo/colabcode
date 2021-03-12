@@ -15,7 +15,7 @@ except ImportError:
     colab_env = False
 
 
-EXTENSIONS = ["ms-python.python", "ms-toolsai.jupyter"]
+
 CODESERVER_VERSION = "3.7.4"
 
 
@@ -28,6 +28,7 @@ class ColabCode:
         mount_drive=False,
         code=True,
         lab=False,
+        EXTENSIONS = ["ms-python.python", "ms-toolsai.jupyter"]
     ):
         self.port = port
         self.password = password
@@ -35,6 +36,7 @@ class ColabCode:
         self._mount = mount_drive
         self._code = code
         self._lab = lab
+        self.EXTENSIONS = EXTENSIONS
         if self._lab:
             self._start_server()
             self._run_lab()
@@ -56,7 +58,7 @@ class ColabCode:
 
     @staticmethod
     def _install_extensions():
-        for ext in EXTENSIONS:
+        for ext in self.EXTENSIONS:
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
     def _start_server(self):
