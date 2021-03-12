@@ -57,7 +57,7 @@ class ColabCode:
         )
 
     @staticmethod
-    def _install_extensions():
+    def _install_extensions(self):
         for ext in self.EXTENSIONS:
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
