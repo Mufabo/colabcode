@@ -17,7 +17,7 @@ except ImportError:
 
 
 CODESERVER_VERSION = "3.7.4"
-EXTENSIONS = ["ms-python.python", "ms-toolsai.jupyter"]
+
 
 class ColabCode:
     def __init__(
@@ -28,7 +28,7 @@ class ColabCode:
         mount_drive=False,
         code=True,
         lab=False,
-        ext=[],
+        EXTENSIONS = ["ms-python.python", "ms-toolsai.jupyter"]
     ):
         self.port = port
         self.password = password
@@ -36,7 +36,7 @@ class ColabCode:
         self._mount = mount_drive
         self._code = code
         self._lab = lab
-        Extensions += ext
+        self.EXTENSINS = EXTENSIONS
         if self._lab:
             self._start_server()
             self._run_lab()
