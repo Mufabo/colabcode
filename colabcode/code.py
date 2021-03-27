@@ -36,13 +36,15 @@ class ColabCode:
         self._mount = mount_drive
         self._code = code
         self._lab = lab
-        self.EXTENSINS = EXTENSIONS
+        self.EXTENSIONS = EXTENSIONS
         if self._lab:
             self._start_server()
             self._run_lab()
         if self._code:
             self._install_code()
-            self._install_extensions()
+            #self._install_extensions()
+            for ext in self.EXTENSIONS:
+                subprocess.run(["code-server", "--install-extension", f"{ext}"])
             self._start_server()
             self._run_code()
 
@@ -56,10 +58,8 @@ class ColabCode:
             stdout=subprocess.PIPE,
         )
 
-    @staticmethod
-    def _install_extensions():
-        for ext in EXTENSIONS:
-            subprocess.run(["code-server", "--install-extension", f"{ext}"])
+
+        
 
     def _start_server(self):
         if self.authtoken:
