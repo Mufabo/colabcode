@@ -28,7 +28,7 @@ class ColabCode:
         mount_drive=False,
         code=True,
         lab=False,
-        EXTENSIONS = ["ms-python.python", "ms-toolsai.jupyter"]
+        extensions = ["ms-python.python", "ms-toolsai.jupyter"],
     ):
         self.port = port
         self.password = password
@@ -36,14 +36,14 @@ class ColabCode:
         self._mount = mount_drive
         self._code = code
         self._lab = lab
-        self.EXTENSIONS = EXTENSIONS
+        self.extensions = extensions
         if self._lab:
             self._start_server()
             self._run_lab()
         if self._code:
             self._install_code()
             #self._install_extensions()
-            for ext in self.EXTENSIONS:
+            for ext in self.extensions:
                 subprocess.run(["code-server", "--install-extension", f"{ext}"])
             self._start_server()
             self._run_code()
